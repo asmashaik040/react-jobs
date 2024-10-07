@@ -15,7 +15,7 @@ const JobPage = ({ deleteJob }) => {
 
     if (!confirm) return;
 
-    //deleteJob(jobId);
+    deleteJob(jobId);
 
     toast.success('Job deleted successfully');
 
@@ -112,7 +112,9 @@ const JobPage = ({ deleteJob }) => {
 };
 
 const jobLoader = async ({ params }) => {
-  const res = await fetch(`/api/jobs/${params.id}`);
+  const dbUrl = "https://my-json-server.typicode.com/asmashaik040/react-jobs";
+
+  const res = await fetch(dbUrl+`/jobs/${params.id}`);
   const data = await res.json();
   return data;
 };

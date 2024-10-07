@@ -13,9 +13,10 @@ import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
 const App = () => {
+  const dbUrl = "https://my-json-server.typicode.com/asmashaik040/react-jobs";
   // Add New Job
   const addJob = async (newJob) => {
-    const res = await fetch('/api/jobs', {
+    const res = await fetch(dbUrl+'/jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +28,7 @@ const App = () => {
 
   // Delete Job
   const deleteJob = async (id) => {
-    const res = await fetch(`/api/jobs/${id}`, {
+    const res = await fetch(dbUrl+`/jobs/${id}`, {
       method: 'DELETE',
     });
     return;
@@ -35,7 +36,7 @@ const App = () => {
 
   // Update Job
   const updateJob = async (job) => {
-    const res = await fetch(`/api/jobs/${job.id}`, {
+    const res = await fetch(dbUrl+`/jobs/${job.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

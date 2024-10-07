@@ -8,9 +8,11 @@ const JobListings = ({ isHome = false }) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs';
+      const dbUrl = "https://my-json-server.typicode.com/asmashaik040/react-jobs";
+
+      const apiUrl = isHome ? '/jobs?_limit=3' : '/jobs';
       try {
-        const res = await fetch(apiUrl);
+        const res = await fetch(dbUrl+apiUrl);
         const data = await res.json();
         setJobs(data);
       } catch (error) {
